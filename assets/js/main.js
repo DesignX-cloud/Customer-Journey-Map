@@ -105,6 +105,10 @@
         for (const attribute of node.attributes) link.setAttribute(attribute.name, attribute.value);
         link.classList.add("flow-node--linked");
         link.append(...node.childNodes);
+        const icon = document.createElement("i");
+        icon.className = "fa-solid fa-arrow-up-right-from-square flow-node-link-icon";
+        icon.setAttribute("aria-hidden", "true");
+        link.append(icon);
         link.href = url.href;
         link.target = "_blank";
         link.rel = "noopener noreferrer";

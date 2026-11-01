@@ -118,3 +118,20 @@ body {
 .flow-short-note { left: 355px; top: 829px; color: #8d5e37; font-size: 18px; }
 .flow-conditions { left: 40px; top: 1401px; }
 .flow-footnote { left: 40px; top: 1438px; color: #718090; }
+
+/* Keep the link hint out of document flow so node and connector geometry stays fixed. */
+.flow-node-link-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  font-size: 18px;
+  line-height: 1;
+  color: #718090;
+  pointer-events: none;
+}
+/* The rectangular top-right corner is outside a diamond; keep its hint inside the upper slope. */
+.flow-decision .flow-node-link-icon {
+  top: 18px;
+  right: calc(50% - 20px);
+}
