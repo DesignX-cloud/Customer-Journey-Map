@@ -22,7 +22,16 @@
       <button class="btn btn-outline-secondary" type="button" data-flow-zoom="reset" aria-controls="consultation-flowchart" disabled>重置</button>
       <output id="flowchart-scale" class="small ms-2" aria-live="polite"></output>
     </div>
-    <p id="flowchart-status" class="small text-secondary" role="status">正在載入教材資料…</p>
+    <aside class="alert alert-danger flowchart-help mb-3" aria-labelledby="flowchart-help-title">
+      <div class="d-flex flex-column flex-md-row align-items-start gap-1 gap-md-3">
+        <h2 id="flowchart-help-title" class="h6 fw-bold mb-0 flex-shrink-0">操作提示</h2>
+        <div class="d-flex flex-wrap column-gap-3 row-gap-1">
+          <p class="mb-0">節點右上角出現 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="visually-hidden">外部連結</span> 圖示，表示可查看延伸教材。滑鼠移入時，節點會呈現淡紫色，點擊即可開啟教材。</p>
+          <p class="mb-0">可使用上方按鈕縮放流程圖；放大後可水平及垂直捲動。</p>
+        </div>
+      </div>
+      <p id="flowchart-status" class="small mt-1 mb-0" role="status">正在載入教材資料…</p>
+    </aside>
     <section class="flowchart-container" aria-label="諮詢階段流程圖，可水平與垂直捲動" tabindex="0">
       <div class="flowchart-surface">
       <div id="consultation-flowchart" class="flow-canvas" data-nodes="./nodes.json" aria-label="03 諮詢階段流程圖">

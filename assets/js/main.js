@@ -125,9 +125,10 @@
       const unmatched = Object.keys(materials).filter(id => !nodes.some(node => node.id === id));
       if (unmatched.length) console.error("JSON 含有未對應的節點 ID：", unmatched);
       issues += unmatched.length;
+      status.hidden = issues === 0;
       status.textContent = issues
         ? `教材資料有 ${issues} 筆對應或網址問題，請檢查 nodes.json。`
-        : `已載入 ${nodes.length} 個節點，${linked} 個提供教材連結。可使用上方按鈕縮放，放大後可雙向捲動。`;
+        : `已載入 ${nodes.length} 個節點，${linked} 個提供教材連結。`;
     } catch (error) {
       console.error("教材資料載入失敗：", {
         url: dataUrl.href,
@@ -136,6 +137,7 @@
         error
       });
       const reason = error.name === "AbortError" ? "請求超過 15 秒，請檢查網路或伺服器。" : error.message;
+      status.hidden = false;
       status.textContent = `教材資料載入失敗：${reason} 流程圖仍可閱讀與縮放；詳細原因請查看 Console。`;
     } finally {
       window.clearTimeout(timeout);
