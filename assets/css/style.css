@@ -1,0 +1,120 @@
+:root {
+  --page-bg: #faf7fc;
+  --ink: #43334e;
+  --purple: #71518b;
+  --stage-bg: #eee3f4;
+  --stage-border: #d8c5e4;
+  --pink: #f7e4ef;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans TC", sans-serif;
+}
+
+.page-eyebrow { color: var(--purple); font-weight: 600; letter-spacing: .12em; }
+.journey-section { background: #fff; border: 1px solid #e9dfef; border-radius: 1.5rem; }
+.journey-scroll { overflow-x: auto; padding: .25rem .25rem 1rem; }
+.journey-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; min-width: 960px; }
+.stage-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  padding: 1.25rem .75rem;
+  border: 1px solid var(--stage-border);
+  border-radius: 1.25rem;
+  background: var(--stage-bg);
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+  font: inherit;
+}
+.journey-grid li:nth-child(even) .stage-card { background: var(--pink); }
+.stage-card:disabled { cursor: default; opacity: 1; }
+.stage-number { color: var(--purple); font-weight: 700; font-size: 1.25rem; }
+.stage-name { font-weight: 600; line-height: 1.6; }
+.stage-status { color: #6b5877; font-size: .8125rem; }
+.stage-card-active { border: 2px solid var(--purple); box-shadow: 0 4px 12px #71518b18; }
+.stage-card-active:hover { background: #e3d3ed; color: var(--ink); }
+.stage-card-active .stage-status { color: var(--purple); font-weight: 700; }
+:focus-visible { outline: 3px solid var(--purple); outline-offset: 4px; }
+.back-link { border: 1px solid var(--purple); border-radius: 999px; color: var(--purple); }
+.back-link:hover { background: var(--purple); color: #fff; }
+.flowchart-container {
+  width: 100%;
+  height: min(75vh, 960px);
+  min-height: 320px;
+  border: 2px dashed var(--stage-border);
+  border-radius: 1.25rem;
+  background: #fff;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+/* One transform scales HTML, CSS diamonds and SVG connectors together. */
+.flowchart-surface { position: relative; width: 2400px; height: 1505px; overflow: clip; }
+.flow-canvas {
+  position: absolute; left: 0; top: 0; width: 2400px; height: 1505px;
+  transform-origin: top left; background: #fff; color: #344553;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  line-height: 1.5; isolation: isolate;
+}
+.flow-canvas p, .flow-canvas h2, .flow-canvas h3, .flow-canvas ol { margin: 0; }
+.flow-heading { position: absolute; left: 40px; top: 47px; font-size: 32px; font-weight: 700; line-height: 1.3; }
+.flow-intro, .flow-legend { position: absolute; left: 40px; color: #718090; font-size: 20px; white-space: nowrap; }
+.flow-intro { top: 94px; }
+.flow-legend { top: 135px; }
+.flow-stage-nav { position: absolute; left: 1463px; top: 54px; width: 905px; }
+.flow-stage-nav ol { display: grid; grid-template-columns: repeat(6, 1fr); column-gap: 9px; row-gap: 22px; padding: 0; list-style: none; }
+.flow-stage-nav li { display: flex; align-items: center; justify-content: center; height: 56px; border: 2px solid #98467f; border-radius: 13px; background: #f5e5f2; font-size: 14px; font-weight: 700; text-align: center; line-height: 1.35; }
+.flow-stage-nav [aria-current] { background: #a9007d; color: #fff; }
+.flow-lane { position: absolute; left: 30px; width: 2340px; border-radius: 16px; z-index: 0; }
+.flow-lane h3 { position: absolute; left: 20px; top: 9px; font-size: 23px; font-weight: 700; }
+.flow-lane-customer { top: 209px; height: 190px; background: #e7f3fa; }
+.flow-lane-staff { top: 409px; height: 815px; background: #f0ebf7; }
+.flow-lane-exit { top: 1234px; height: 150px; background: #fff3eb; }
+.flow-connections { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: visible; }
+.flow-node {
+  --node-fill: #fff; --node-border: #91a5b8;
+  position: absolute; z-index: 2; display: flex; align-items: center; justify-content: center;
+  padding: 4px 10px; border: 2px solid var(--node-border); border-radius: 16px;
+  background: var(--node-fill); color: #344553; font-size: 22px; line-height: 1.45;
+  text-align: center; text-decoration: none; box-sizing: border-box;
+}
+.flow-node > span { position: relative; z-index: 1; }
+.flow-success { --node-fill: #e6f5e9; --node-border: #6ca681; }
+.flow-next { --node-fill: #d8efdf; --node-border: #6ca681; }
+.flow-concern { --node-fill: #e5dbee; --node-border: #a58bb8; }
+.flow-detail { --node-border: #c2b3cf; border-radius: 9px; justify-content: flex-start; text-align: left; padding: 3px 14px; font-size: 18px; line-height: 1.45; }
+.flow-detail strong { font-size: 20px; font-weight: 700; }
+.flow-exit { --node-border: #d59a7f; font-size: 21px; }
+.flow-decision { --node-fill: #fff9e8; --node-border: #b69a54; padding: 0; border: 0; border-radius: 0; background: none; }
+/* Clip only the two decorative backgrounds, preserving the HTML label and focus ring. */
+.flow-decision::before, .flow-decision::after { content: ""; position: absolute; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.flow-decision::before { inset: 0; background: var(--node-border); }
+.flow-decision::after { inset: 2px 4px; background: var(--node-fill); }
+.flow-decision > span { max-width: 72%; }
+.flow-node--linked {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.flow-node--linked::before, .flow-node--linked::after { transition: background-color .18s ease; }
+.flow-node--linked:hover, .flow-node--linked:focus-visible {
+  --node-fill: #f0e6fa;
+  --node-border: #71518b;
+  color: #344553;
+  box-shadow: 0 3px 12px #71518b33;
+}
+.flow-node--linked:focus-visible { outline: 4px dashed #51306f; outline-offset: 5px; --node-border: #51306f; }
+.flow-label { position: absolute; z-index: 3; font-size: 18px; color: #397893; white-space: nowrap; pointer-events: none; }
+.flow-note { position: absolute; font-size: 20px; white-space: nowrap; pointer-events: none; }
+.flow-short-note { left: 355px; top: 829px; color: #8d5e37; font-size: 18px; }
+.flow-conditions { left: 40px; top: 1401px; }
+.flow-footnote { left: 40px; top: 1438px; color: #718090; }

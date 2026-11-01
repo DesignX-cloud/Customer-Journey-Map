@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>03 諮詢階段｜客戶旅程流程</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="../../assets/css/style.css" rel="stylesheet">
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+  <main class="container py-5">
+    <a class="btn back-link mb-4 px-4" href="../../index.html">← 返回首頁</a>
+    <header class="mb-4">
+      <p class="page-eyebrow mb-2">客戶旅程流程</p>
+      <h1 class="fw-bold">03 諮詢階段</h1>
+    </header>
+    <div class="flowchart-toolbar d-flex flex-wrap align-items-center gap-2 mb-3" role="group" aria-label="流程圖縮放控制">
+      <button class="btn btn-outline-secondary" type="button" data-flow-zoom="out" aria-controls="consultation-flowchart" disabled>− 縮小</button>
+      <button class="btn btn-outline-secondary" type="button" data-flow-zoom="in" aria-controls="consultation-flowchart" disabled>＋ 放大</button>
+      <button class="btn btn-outline-secondary" type="button" data-flow-zoom="reset" aria-controls="consultation-flowchart" disabled>重置</button>
+      <output id="flowchart-scale" class="small ms-2" aria-live="polite"></output>
+    </div>
+    <p id="flowchart-status" class="small text-secondary" role="status">正在載入教材資料…</p>
+    <section class="flowchart-container" aria-label="諮詢階段流程圖，可水平與垂直捲動" tabindex="0">
+      <div class="flowchart-surface">
+      <div id="consultation-flowchart" class="flow-canvas" data-nodes="./nodes.json" aria-label="03 諮詢階段流程圖">
+        <h2 class="flow-heading">03 諮詢階段｜客戶服務現況流程（As-Is）</h2>
+        <p class="flow-intro">由左至右閱讀｜客戶 × 駐點／內勤專員｜虛線為替代方案或中斷分支</p>
+        <p class="flow-legend">閱讀方向：左 → 右 ｜ 上：客戶 下：駐點／內勤專員 ｜ 藍色實線：流程及跨角色互動 ｜ 虛線：例外／中斷</p>
+        <nav class="flow-stage-nav" aria-label="流程圖原始 12 階段總覽"><ol>
+          <li>1. 需求產生</li>
+          <li>2.品牌認知與接觸</li>
+          <li aria-current="step">3. 諮詢</li>
+          <li>4. 約訪</li>
+          <li>5. 簽約</li>
+          <li>6. 付款</li>
+          <li>7. 服務準備</li>
+          <li>8. 首次服務<br>與期待驗證</li>
+          <li>9. 服務磨合<br>與調整</li>
+          <li>10.定期服務與<br>關係維護</li>
+          <li>11. 續約評<br>估與決策</li>
+          <li>12. 解約<br>與流失</li>
+        </ol></nav>
+        <section class="flow-lane flow-lane-customer" aria-label="客戶泳道"><h3>客戶</h3></section>
+        <section class="flow-lane flow-lane-staff" aria-label="駐點／內勤專員泳道"><h3>駐點／內勤專員</h3></section>
+        <section class="flow-lane flow-lane-exit" aria-label="例外／中斷泳道"><h3>例外／中斷</h3></section>
+        <!-- Shared 2400 × 1505 coordinates: SVG contains only the original connector paths. -->
+        <svg class="flow-connections" viewBox="0 0 2400 1505" width="2400" height="1505" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+          <use href="./flowchart.svg#consultation-connections"></use>
+        </svg>
+        <div id="consult-022" class="flow-node " data-flow-node style="left:70px;top:284px;width:230px;height:80px;"><span>產生清潔需求<br>主動詢問／留訊</span></div>
+        <div id="consult-001" class="flow-node " data-flow-node style="left:70px;top:504px;width:230px;height:90px;"><span>接聽／回電<br>確認需求與簽約疑慮</span></div>
+        <div id="consult-002" class="flow-node flow-decision" data-flow-node style="left:360px;top:484px;width:250px;height:130px;"><span>是否願意洽談<br>定期長約？</span></div>
+        <div id="consult-003" class="flow-node " data-flow-node style="left:680px;top:504px;width:240px;height:90px;"><span>說明服務頻率<br>與坪數限制</span></div>
+        <div id="consult-004" class="flow-node flow-decision" data-flow-node style="left:1000px;top:484px;width:250px;height:130px;"><span>頻率與安排<br>是否可接受？</span></div>
+        <div id="consult-005" class="flow-node " data-flow-node style="left:1330px;top:504px;width:260px;height:90px;"><span>說明價格、服務內容<br>與合約條件</span></div>
+        <div id="consult-006" class="flow-node " data-flow-node style="left:1330px;top:279px;width:260px;height:90px;"><span>提供格局、人數<br>寵物等資訊</span></div>
+        <div id="consult-007" class="flow-node flow-decision" data-flow-node style="left:1680px;top:259px;width:250px;height:130px;"><span>願意安排<br>場勘？</span></div>
+        <div id="consult-008" class="flow-node flow-success" data-flow-node style="left:2020px;top:284px;width:280px;height:80px;"><span>安排線上／實體場勘</span></div>
+        <div id="consult-009" class="flow-node flow-next" data-flow-node style="left:2020px;top:504px;width:280px;height:90px;"><span>進入階段 4｜約訪</span></div>
+        <div id="consult-010" class="flow-node " data-flow-node style="left:1680px;top:504px;width:250px;height:90px;"><span>說明疑慮、回應問題</span></div>
+        <div id="consult-011" class="flow-node " data-flow-node style="left:355px;top:709px;width:270px;height:100px;"><span>了解試做需求<br>說明 12 次短期方案</span></div>
+        <div id="consult-012" class="flow-node " data-flow-node style="left:690px;top:709px;width:270px;height:100px;"><span>一次付清<br>須於規定短期內用完</span></div>
+        <div id="consult-013" class="flow-node flow-decision" data-flow-node style="left:1025px;top:694px;width:250px;height:130px;"><span>是否接受<br>短期方案？</span></div>
+        <div id="consult-014" class="flow-node flow-concern" data-flow-node style="left:1310px;top:889px;width:650px;height:72px;"><span>了解頻率、費用與服務安排的疑慮</span></div>
+        <div id="consult-015" class="flow-node flow-detail" data-flow-node style="left:1310px;top:979px;width:650px;height:66px;"><span><strong>未來需求減少，擔心被一年合約綁住</strong><br>說明可換約；無須補差價以原價買回清潔百寶箱。</span></div>
+        <div id="consult-016" class="flow-node flow-detail" data-flow-node style="left:1310px;top:1054px;width:650px;height:66px;"><span><strong>想每兩週兩人，但比每週一人貴／不想等門</strong><br>釐清價格與到訪次數的取捨；另討論進出安排。</span></div>
+        <div id="consult-017" class="flow-node flow-detail" data-flow-node style="left:1310px;top:1129px;width:650px;height:66px;"><span><strong>希望首次快速清乾淨，不想分次等一個月</strong><br>首次可安排兩人、扣兩次；之後每週一次、一人。</span></div>
+        <div id="consult-018" class="flow-node flow-decision" data-flow-node style="left:2040px;top:984px;width:260px;height:140px;"><span>說明後<br>是否可接受？</span></div>
+        <div id="consult-019" class="flow-node flow-exit" data-flow-node style="left:345px;top:1289px;width:620px;height:65px;"><span>僅單次／駐點需求：不符承接範圍，結束諮詢</span></div>
+        <div id="consult-020" class="flow-node flow-exit" data-flow-node style="left:1020px;top:1289px;width:540px;height:65px;"><span>不接受短期方案：暫緩／結束本次諮詢</span></div>
+        <div id="consult-021" class="flow-node flow-exit" data-flow-node style="left:1650px;top:1289px;width:650px;height:65px;"><span>仍有疑慮則續談／暫緩；條件不符則結束諮詢</span></div>
+        <p class="flow-label" style="left:255px;top:370px;">客戶詢問 → 專員接洽</p>
+        <p class="flow-label" style="left:636px;top:515px;">是</p>
+        <p class="flow-label" style="left:1280px;top:515px;">是</p>
+        <p class="flow-label" style="left:1497px;top:400px;">專員詢問 → 客戶提供資料</p>
+        <p class="flow-label" style="left:1960px;top:289px;">是</p>
+        <p class="flow-label" style="left:1823px;top:435px;">有疑慮</p>
+        <p class="flow-label" style="left:2015px;top:426px;">說明後願意</p>
+        <p class="flow-label" style="left:571px;top:645px;">想先試做，尚不願簽長約</p>
+        <p class="flow-label" style="left:1347px;top:705px;">是：接續方案洽談</p>
+        <p class="flow-label" style="left:1619px;top:675px;">否：先了解真正疑慮</p>
+        <p class="flow-label" style="left:2117px;top:610px;">是：回主線洽談</p>
+        <p class="flow-label" style="left:119px;top:1178px;">需求不符</p>
+        <p class="flow-label" style="left:1855px;top:1183px;">仍不願約訪</p>
+        <p class="flow-label" style="left:2191px;top:1196px;">否</p>
+        <p class="flow-note flow-short-note">短期方案不計駐點／內勤業績；後續有一定比例轉為長約。</p>
+        <p class="flow-note flow-conditions">服務條件不符例：僅每月一次，或不接受固定安排、希望隨意指定服務日期與次數。</p>
+        <p class="flow-note flow-footnote">備註：60 坪以上住宅不建議每兩週一次。短期方案使用期限、換約與扣次細節，依實際方案說明。</p>
+      </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
