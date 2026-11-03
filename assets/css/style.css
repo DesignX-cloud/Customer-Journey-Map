@@ -73,6 +73,26 @@ body {
 .flow-stage-nav ol { display: grid; grid-template-columns: repeat(6, 1fr); column-gap: 9px; row-gap: 22px; padding: 0; list-style: none; }
 .flow-stage-nav li { display: flex; align-items: center; justify-content: center; height: 56px; border: 2px solid #98467f; border-radius: 13px; background: #f5e5f2; font-size: 14px; font-weight: 700; text-align: center; line-height: 1.35; }
 .flow-stage-nav [aria-current] { background: #a9007d; color: #fff; }
+.flow-stage-nav li { position: relative; cursor: default; }
+.flow-stage-nav a {
+  position: absolute; inset: -2px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid #98467f; border-radius: inherit;
+  color: inherit; text-decoration: none; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.flow-stage-nav a:hover, .flow-stage-nav a:focus-visible {
+  background: var(--stage-hover, #e9d5f5); border-color: #71358d;
+}
+.flow-stage-nav a:focus-visible { outline: 4px solid #51306f; outline-offset: 4px; }
+/* Match the SVG buttons without changing or repainting its artwork. */
+.flow-stage-nav--overlay { left: 0; top: 0; width: 2400px; z-index: 3; --stage-hover: rgb(113 81 139 / 14%); }
+.flow-stage-nav--overlay li {
+  position: absolute; width: 142.89px; height: 55.9121px;
+  border-color: transparent; background: transparent; color: transparent; border-radius: 12.4249px;
+}
+.flow-stage-nav--overlay [aria-current] { background: transparent; color: transparent; }
+.flow-stage-nav--overlay a { border-color: transparent; }
 .flow-lane { position: absolute; left: 30px; width: 2340px; border-radius: 16px; z-index: 0; }
 .flow-lane h3 { position: absolute; left: 20px; top: 9px; font-size: 23px; font-weight: 700; }
 .flow-lane-customer { top: 209px; height: 190px; background: #e7f3fa; }
@@ -137,8 +157,8 @@ body {
 }
 .flowchart-help {
   --bs-alert-color: #59466b;
-  --bs-alert-bg: #f5e5f2;
-  --bs-alert-border-color: #ded2ea;
+  --bs-alert-bg: #f5e5f2 !important;
+  --bs-alert-border-color: #ded2ea!important;
   --bs-alert-padding-x: 1rem;
   --bs-alert-padding-y: .75rem;
   font-size: .875rem;
@@ -146,3 +166,15 @@ body {
 }
 .flowchart-help h2 { font-size: inherit; line-height: inherit; }
 .flowchart-help .fa-arrow-up-right-from-square { font-size: 12px; color: #718090; }
+/* 04: the unchanged SVG and transparent hit areas share one scaled canvas. */
+.visit-surface, .visit-canvas { width: 2400px; height: 1581px; }
+.visit-canvas .visit-diagram { position: absolute; inset: 0; display: block; width: 2400px; height: 1581px; max-width: none; pointer-events: none; }
+.visit-canvas .visit-node { position: absolute; z-index: 2; display: block; box-sizing: border-box; border-radius: 16px; background: transparent; pointer-events: none; text-decoration: none; }
+.visit-canvas .visit-decision { border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.visit-canvas .visit-node.flow-node--linked { pointer-events: auto; cursor: pointer; }
+.visit-canvas .visit-node.flow-node--linked:hover { background: rgb(113 81 139 / 12%); box-shadow: inset 0 0 0 3px #71518b; }
+.visit-canvas .visit-node.flow-node--linked:focus-visible { outline: 4px dashed #51306f; outline-offset: -5px; background: rgb(113 81 139 / 12%); box-shadow: inset 0 0 0 5px #51306f; }
+/* A diamond clips external outlines, so use an inset diamond ring for focus. */
+.visit-canvas .visit-decision:focus-visible::before { content: ""; position: absolute; inset: 0; background: #51306f; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0, 50% 4%, 2% 50%, 50% 96%, 98% 50%, 50% 4%); }
+.visit-canvas .visit-node .flow-node-link-icon { top: 8px; right: 8px; }
+.visit-canvas .visit-decision .flow-node-link-icon { top: 18px; right: calc(50% - 20px); }

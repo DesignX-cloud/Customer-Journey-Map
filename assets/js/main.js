@@ -1,17 +1,38 @@
 ﻿"use strict";
 
-// The canvas uses the reference's 2400 × 1505 coordinates. Scale the whole layer
+// Only completed sibling stage pages belong here; relative links preserve hosting prefixes.
+(() => {
+  const stagePages = {
+    3: "../03-consultation/index.html",
+    4: "../04-visit/index.html"
+  };
+  document.querySelectorAll(".flow-stage-nav li").forEach(item => {
+    const stage = [...item.parentElement.children].indexOf(item) + 1;
+    if (item.hasAttribute("aria-current")) return;
+    if (!stagePages[stage]) {
+      item.setAttribute("aria-disabled", "true");
+      return;
+    }
+    const link = document.createElement("a");
+    link.setAttribute("href", stagePages[stage]);
+    link.append(...item.childNodes);
+    item.append(link);
+  });
+})();
+
+// Each canvas uses its reference coordinates. Scale the whole layer
 // once so HTML nodes, labels, swimlanes and SVG connections cannot drift apart.
 (() => {
-  const canvas = document.getElementById("consultation-flowchart");
+  const canvas = document.querySelector("[data-flow-canvas]") || document.getElementById("consultation-flowchart");
   if (!canvas) return;
   const viewport = canvas.closest(".flowchart-container");
   const surface = canvas.parentElement;
   const status = document.getElementById("flowchart-status");
   const output = document.getElementById("flowchart-scale");
   const buttons = [...document.querySelectorAll("[data-flow-zoom]")];
-  const width = 2400;
-  const height = 1505;
+  const width = Number(canvas.dataset.width) || 2400;
+  const height = Number(canvas.dataset.height) || 1505;
+  const nodeCount = Number(canvas.dataset.nodeCount) || 22;
   const maxScale = 3;
   let scale;
   let automatic = true;
@@ -78,8 +99,8 @@
         throw new Error("nodes.json 必須是以節點 ID 為 Key 的 JSON 物件。");
       }
       const nodes = [...canvas.querySelectorAll("[data-flow-node]")];
-      if (nodes.length !== 22 || new Set(nodes.map(node => node.id)).size !== 22) {
-        throw new Error(`HTML 節點數量或 ID 異常：找到 ${nodes.length} 個節點，預期 22 個唯一 ID。`);
+      if (nodes.length !== nodeCount || new Set(nodes.map(node => node.id)).size !== nodeCount) {
+        throw new Error(`HTML 節點數量或 ID 異常：找到 ${nodes.length} 個節點，預期 ${nodeCount} 個唯一 ID。`);
       }
       let linked = 0;
       let issues = 0;
