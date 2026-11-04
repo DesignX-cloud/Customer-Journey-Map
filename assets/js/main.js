@@ -4,7 +4,8 @@
 (() => {
   const stagePages = {
     3: "../03-consultation/index.html",
-    4: "../04-visit/index.html"
+    4: "../04-visit/index.html",
+    5: "../05-contract/index.html"
   };
   document.querySelectorAll(".flow-stage-nav li").forEach(item => {
     const stage = [...item.parentElement.children].indexOf(item) + 1;

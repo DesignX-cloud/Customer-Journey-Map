@@ -178,3 +178,20 @@ body {
 .visit-canvas .visit-decision:focus-visible::before { content: ""; position: absolute; inset: 0; background: #51306f; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0, 50% 4%, 2% 50%, 50% 96%, 98% 50%, 50% 4%); }
 .visit-canvas .visit-node .flow-node-link-icon { top: 8px; right: 8px; }
 .visit-canvas .visit-decision .flow-node-link-icon { top: 18px; right: calc(50% - 20px); }
+
+/* 05: the unchanged SVG and transparent hit areas share one scaled canvas. */
+.contract-surface, .contract-canvas { width: 2400px; height: 1505px; }
+.contract-canvas .contract-diagram { position: absolute; inset: 0; display: block; width: 2400px; height: 1505px; max-width: none; pointer-events: none; }
+.contract-canvas .contract-node { position: absolute; z-index: 2; display: block; box-sizing: border-box; border-radius: 16px; background: transparent; pointer-events: none; text-decoration: none; }
+.contract-canvas .contract-decision { border-radius: 0; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.contract-canvas .contract-node.flow-node--linked { pointer-events: auto; cursor: pointer; }
+.contract-canvas .contract-node.flow-node--linked:hover { background: rgb(113 81 139 / 12%); box-shadow: inset 0 0 0 3px #71518b; }
+.contract-canvas .contract-node.flow-node--linked:focus-visible { outline: 4px dashed #51306f; outline-offset: -5px; background: rgb(113 81 139 / 12%); box-shadow: inset 0 0 0 5px #51306f; }
+/* A diamond clips external outlines, so use an inset diamond ring for focus. */
+.contract-canvas .contract-decision:focus-visible::before { content: ""; position: absolute; inset: 0; background: #51306f; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0, 50% 4%, 2% 50%, 50% 96%, 98% 50%, 50% 4%); }
+.contract-canvas .contract-node .flow-node-link-icon { top: 8px; right: 8px; }
+.contract-canvas .contract-decision .flow-node-link-icon { top: 18px; right: calc(50% - 20px); }
+
+.contract-canvas .contract-info { border-radius: 12px; }
+.contract-canvas .flow-stage-nav--overlay li { width: 141px; height: 58px; border: 0; border-radius: 12px; }
+.contract-canvas .flow-stage-nav--overlay a { inset: 0; border: 0; }
