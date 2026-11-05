@@ -65,17 +65,6 @@ body {
   line-height: 1.5; isolation: isolate;
 }
 .flow-canvas p, .flow-canvas h2, .flow-canvas h3, .flow-canvas ol { margin: 0; }
-/* Applied inside the runtime inline SVG, including every generated line. */
-.flow-canvas .flow-svg-label,
-.flow-canvas .flow-svg-label > tspan {
-  fill: var(--ink);
-  color: var(--ink);
-  font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  isolation: isolate;
-  text-anchor: middle;
-}
 .flow-heading { position: absolute; left: 40px; top: 47px; font-size: 32px; font-weight: 700; line-height: 1.3; }
 .flow-intro, .flow-legend { position: absolute; left: 40px; color: #718090; font-size: 20px; white-space: nowrap; }
 .flow-intro { top: 94px; }
@@ -200,20 +189,8 @@ body {
 .contract-canvas .contract-node.flow-node--linked:focus-visible { outline: 4px dashed #51306f; outline-offset: -5px; background: rgb(113 81 139 / 12%); box-shadow: inset 0 0 0 5px #51306f; }
 /* A diamond clips external outlines, so use an inset diamond ring for focus. */
 .contract-canvas .contract-decision:focus-visible::before { content: ""; position: absolute; inset: 0; background: #51306f; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%, 50% 0, 50% 4%, 2% 50%, 50% 96%, 98% 50%, 50% 4%); }
-/* Symmetric text gutters keep labels centered and clear of the 18px hint.
-   SVG labels read this padding explicitly; overlay dimensions stay unchanged. */
-.contract-canvas .contract-node.flow-node--linked {
-  padding: 4px 44px;
-}
-.contract-canvas .contract-node .flow-node-link-icon {
-  top: 8px;
-  right: 8px;
-  transform: none;
-}
-.contract-canvas .contract-decision .flow-node-link-icon {
-  top: 18px;
-  right: calc(50% - 20px);
-}
+.contract-canvas .contract-node .flow-node-link-icon { top: 8px; right: 8px; }
+.contract-canvas .contract-decision .flow-node-link-icon { top: 18px; right: calc(50% - 20px); }
 
 .contract-canvas .contract-info { border-radius: 12px; }
 .contract-canvas .flow-stage-nav--overlay li { width: 141px; height: 58px; border: 0; border-radius: 12px; }
