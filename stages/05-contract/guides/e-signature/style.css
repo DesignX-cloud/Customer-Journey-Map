@@ -1,0 +1,46 @@
+.esign-guide {
+  --esign-pink: #b51668;
+  --esign-border: #efdce5;
+  margin: 0;
+  background: #fffafb;
+  color: #342c31;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.esign-guide .esign-guide__container { max-width: 960px; padding: 0 24px; }
+.esign-guide .esign-guide__intro { padding: 64px 0 40px; border-bottom: 1px solid var(--esign-border); }
+/* Match Stage 04's back-link without importing or changing global styles. */
+.esign-guide .esign-guide__back-link { border: 1px solid #71518b; border-radius: 999px; color: #71518b; }
+.esign-guide .esign-guide__back-link:hover { background: #71518b; color: #fff; }
+.esign-guide .esign-guide__back-link:focus-visible { outline: 3px solid #71518b; outline-offset: 4px; }
+.esign-guide .esign-guide__eyebrow { color: var(--esign-pink); font-weight: 700; letter-spacing: .1em; }
+.esign-guide h1 { margin-bottom: 20px; font-size: clamp(1.9rem, 5vw, 2.75rem); font-weight: 700; line-height: 1.4; }
+.esign-guide .esign-guide__intro p:last-child { margin-bottom: 0; }
+.esign-guide .esign-guide__hint { color: #73626b; font-size: .9375rem; }
+.esign-guide .esign-guide__step { padding-top: 48px; padding-bottom: 48px; }
+.esign-guide .esign-guide__step + .esign-guide__step { border-top: 1px solid var(--esign-border); }
+.esign-guide .esign-guide__number { color: var(--esign-pink); font-weight: 800; letter-spacing: .12em; margin-bottom: 8px; }
+.esign-guide h2 { font-size: clamp(1.25rem, 3vw, 1.65rem); font-weight: 700; line-height: 1.6; margin-bottom: 12px; }
+.esign-guide .esign-guide__description { color: #63535c; margin-bottom: 24px; }
+.esign-guide .esign-guide__figure { margin: 0; text-align: center; }
+.esign-guide .esign-guide__image-button { display: inline-block; max-width: 100%; padding: 0; border: 1px solid var(--esign-border); border-radius: 8px; background: #fff; cursor: zoom-in; box-shadow: 0 4px 20px #6b2f4b08; }
+.esign-guide .esign-guide__image-button img { display: block; max-width: 100%; height: auto; border-radius: 7px; }
+.esign-guide .esign-guide__image-button:hover { border-color: var(--esign-pink); }
+.esign-guide .esign-guide__image-button:focus-visible,
+.esign-guide button:focus-visible { outline: 3px solid var(--esign-pink); outline-offset: 4px; }
+.esign-guide figcaption { margin-top: 12px; color: #73626b; font-size: .875rem; }
+.esign-guide .esign-guide__footer { border-top: 1px solid var(--esign-border); padding: 24px 0 40px; color: #73626b; font-size: .875rem; }
+.esign-guide .modal-dialog { max-width: 1400px; margin-right: auto; margin-left: auto; width: calc(100% - 32px); }
+.esign-guide .modal-title { line-height: 1.6; }
+.esign-guide .modal-header .btn-close { min-width: 24px; min-height: 24px; padding: 10px; margin: 0 0 0 12px; flex-shrink: 0; }
+.esign-guide .modal-body img { height: auto; }
+.esign-guide .esign-guide__close { background: var(--esign-pink); color: #fff; min-height: 44px; padding: 8px 20px; }
+.esign-guide .esign-guide__close:hover { background: #921052; }
+@media (max-width: 767px) {
+  .esign-guide .esign-guide__container { padding-right: 20px; padding-left: 20px; }
+  .esign-guide .esign-guide__intro { padding-top: 36px; padding-bottom: 28px; }
+  .esign-guide .esign-guide__step { padding-top: 32px; padding-bottom: 32px; }
+  .esign-guide .modal-body { padding: 8px; }
+}
