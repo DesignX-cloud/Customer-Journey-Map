@@ -4,19 +4,24 @@
     "url": ""
   },
   "contract-002": {
-    "title": "閱讀並確認合約；了解雙方權利與義務",
-    "url": ""
+    "displayText": [
+      "透過居家服務",
+      "營運系統，進行",
+      "電子合約簽署"
+    ],
+    "title": "透過居家服務營運系統，進行電子合約簽署",
+    "url": "guides/e-signature/index.html"
   },
   "contract-003": {
     "title": "是否同意條款；並繼續簽約？",
     "url": ""
   },
   "contract-004": {
-    "title": "透過 Email；提供電子合約簽署",
+    "title": "依序完成必填項目，在系統上click[寄送確認單]送出電子合約",
     "url": ""
   },
   "contract-005": {
-    "title": "開啟電子合約；依流程完成簽署",
+    "title": "請客戶進入合約提供信箱，找到電子合約，頁面拉到最下面click確認按紐完成簽署",
     "url": ""
   },
   "contract-006": {
